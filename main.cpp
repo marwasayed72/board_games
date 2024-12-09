@@ -5,6 +5,7 @@
 #include "connect4.h"
 #include "Misere_X_O.h"
 #include "X_Ogame.h"
+#include "ultimate.h"
 
 using namespace std;
 
@@ -15,18 +16,19 @@ int main() {
         cout<<"2- Connect 4"<<endl;
         cout <<"3- Misere Tic Tac Toe"<< endl;
         cout <<"4- 5 x 5 Tic Tac Toe"<<endl;
-        cout<<"5- Exit"<<endl;
+        cout<< "5- Ultimate Tic Tac Toe"<<endl;
+        cout<< "6- Exit"<<endl;
         cout<<"Enter your choice: "<<endl;
         string ccc ;
         cin>>ccc;
-        while(ccc!="1"&&ccc!="2"&&ccc!="3" &&ccc!="4" && ccc!="5"){
+        while(ccc!="1"&&ccc!="2"&&ccc!="3" &&ccc!="4" && ccc!="5" && ccc!="6"){
             cout<<"Invalid input, please, try again: "<<endl;
             cin>>ccc;
         }
 
         if(ccc=="1"){
             Player<int>* players[2];
-            X_O_Board<int>* B = new X_O_Board<int>;
+            Board<int>* B = new X_O_Board<int>;
             string playerXName, player2Name;
 
             cout << "Welcome to numerical X-O Game. \n";
@@ -49,11 +51,11 @@ int main() {
                 players[0] = new X_O_Player<int>(playerXName, 0);
             }
             else if(choice == "2"){
-                players[0] = new X_O_Random_Player<int>(0);
+                players[0] = new X_O_Random_Player<int>(0, playerXName);
             }
             else {
-//           players[0] = new X_O_MinMax_Player<int>(0);
-                players[0]->setBoard(B);
+//                players[0] = new X_O_MinMax_Player<int>(0);
+//                players[0]->setBoard(B);
             }
 
             // Set up player 2
@@ -73,11 +75,11 @@ int main() {
                 players[1] = new X_O_Player<int>(player2Name, 0);
             }
             else if(choice == "2"){
-                players[1] = new X_O_Random_Player<int>(0);
+                players[1] = new X_O_Random_Player<int>(0, player2Name);
             }
             else {
-//            players[1] = new X_O_MinMax_Player<int>(0);
-                players[1]->setBoard(B);
+//              players[1] = new X_O_MinMax_Player<int>(0);
+//              players[1]->setBoard(B);
             }
 
             // Create the game manager and run the game
@@ -112,7 +114,7 @@ int main() {
                 players[0] = new connect4Player<char>(playerXName, 'X');
             }
             else if(choice == "2"){
-                players[0] = new connect4_RandomPlayer<char>('X');
+                players[0] = new connect4_RandomPlayer<char>('X', playerXName);
             }
             else {
 //            players[0] = new X_O_MinMax_Player<int>('X');
@@ -135,7 +137,7 @@ int main() {
                 players[1] = new connect4Player<char>(playerOName, 'O');
             }
             else if(choice == "2"){
-                players[1] = new connect4_RandomPlayer<char>('O');
+                players[1] = new connect4_RandomPlayer<char>('O', playerOName);
             }
             else {
 //            players[1] = new X_O_MinMax_Player<int>(0);
@@ -251,12 +253,49 @@ int main() {
             }
 
         }
+        else if(ccc=="5"){
+            Player<char>* players[2];
+            ultimateBoard<char>* B = new ultimateBoard<char>();
+            cout << "===== Welcome to Misere XO Game ======\n";
+            string playerXName, playerOName;
+            cout << "Enter the name of the first player: ";
+            cin >> playerXName;
+            string  choice1 ,choice2;
+            cout << "Select type for Player 1: \n1. Human player\n2. Random player: "<<endl;
+            cin >> choice1;
+            cout << "Enter the name of the second player: ";
+            cin >> playerOName;
+            cout << "Select one option for Player 2:\n1. Human player\n2. Random player: "<< endl;
+            cin >> choice2;
+
+
+            if (choice1 == "1"){
+                players[0] = new ultimatePlayer<char>(playerXName, 'X');
+            }
+            else if (choice1 == "2"){
+                players[0] = new ultimatRandomPlayer<char>('X',playerXName);
+            }
+
+            // set player 2
+
+            if (choice2 == "1"){
+                players[1] = new ultimatePlayer<char>(playerOName, 'O');
+            }
+            else if (choice2 == "2"){
+                players[1] = new ultimatRandomPlayer<char>('O',playerOName);}
+
+            GameManager<char>ultimate_board(B,players);
+            ultimate_board.run();
+
+
+            for (int i = 0; i < 2; ++i) {
+                delete players[i];
+            }
+        }
         else{
             exit(0);
         }
     }
-
-    return 0;
 }
 
 
