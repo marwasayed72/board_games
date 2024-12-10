@@ -38,7 +38,7 @@ class X_O_Random_Player : public RandomPlayer<T>{
 private:
     bool inVector(T symbol);
 public:
-    X_O_Random_Player (T symbol);
+    X_O_Random_Player (T symbol, string name);
     void getmove(int &x, int &y) ;
 };
 
@@ -190,9 +190,9 @@ void X_O_Player<T>::getmove(int& x, int& y) {
 
 // Constructor for X_O_Random_Player
 template <typename T>
-X_O_Random_Player<T>::X_O_Random_Player(T symbol) : RandomPlayer<T>(symbol) {
+X_O_Random_Player<T>::X_O_Random_Player(T symbol, string name) : RandomPlayer<T>(symbol) {
     this->dimension = 3;
-    this->name = "Random Computer Player";
+    this->name = name;
     srand(static_cast<unsigned int>(time(0)));  // Seed the random number generator
 }
 
