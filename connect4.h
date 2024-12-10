@@ -30,7 +30,7 @@ public:
 template<typename T>
 class connect4_RandomPlayer : public RandomPlayer<T>{
 public:
-    connect4_RandomPlayer(T symbol);
+    connect4_RandomPlayer(T symbol, string name);
     void getmove(int &x, int &y) ;
 };
 
@@ -183,9 +183,9 @@ void connect4Player<T>::getmove(int& x, int& y) {
 
 // Constructor for X_O_Random_Player
 template <typename T>
-connect4_RandomPlayer<T>::connect4_RandomPlayer(T symbol) : RandomPlayer<T>(symbol) {
+connect4_RandomPlayer<T>::connect4_RandomPlayer(T symbol, string name) : RandomPlayer<T>(symbol) {
     this->dimension = 7;
-    this->name = "Random Computer Player";
+    this->name = name;
     srand(static_cast<unsigned int>(time(0)));
 }
 
