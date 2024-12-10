@@ -17,8 +17,7 @@ short move00=0, move01=0, move02=0, move10=0, move11=0, move12=0, move20=0, move
 
 template<typename T>
 class ultimateBoard : public Board<T>{
-private:
-    bool finished_square(int x, int y);
+
 public:
     ultimateBoard();
     bool update_board(int x, int y, T symbol);
@@ -58,75 +57,6 @@ ultimateBoard<T> :: ultimateBoard(){
         }
     }
     this->n_moves = 0;
-}
-
-
-template<typename T>
-bool ultimateBoard<T> ::finished_square(int x, int y) {
-    if(x<3 && y<3){
-        if(implicitBoard[0][0]==0){
-            return false;
-        }else{
-            return true;
-        }
-    }
-    else if(2<y && y<6 && x<3){
-        if(implicitBoard[0][1]==0){
-            return false;
-        }else{
-            return true;
-        }
-    }
-
-    else if(6<y && y<9 && x<3){
-        if(implicitBoard[0][2]==0){
-            return false;
-        }else{
-            return true;
-        }
-    }
-    else if(y<3 && 2<x && x<6){
-        if(implicitBoard[1][0]==0){
-            return false;
-        }else{
-            return true;
-        }
-    }
-    else if(y<6 && 2<y && x<6 && x>2){
-        if(implicitBoard[1][1]==0){
-            return false;
-        }else{
-            return true;
-        }
-    }
-    else if(6<y && y<9 && x<6 && x>2){
-        if(implicitBoard[1][2]==0){
-            return false;
-        }else{
-            return true;
-        }
-    }
-    else if(x>6 && x<9 && y<3){
-        if(implicitBoard[2][0]==0){
-            return false;
-        }else{
-            return true;
-        }
-    }
-    else if(x>6 && x<9 && 2<y && y<6){
-        if(implicitBoard[2][1]==0){
-            return false;
-        }else{
-            return true;
-        }
-    }
-    else if(x>6 && x<9 && 6<y && y<9){
-        if(implicitBoard[2][2]==0){
-            return false;
-        }else{
-            return true;
-        }
-    }
 }
 
 
