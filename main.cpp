@@ -7,6 +7,7 @@
 #include "X_Ogame.h"
 #include "ultimate.h"
 #include "SUS.h"
+#include "Pyramic"
 
 using namespace std;
 
