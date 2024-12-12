@@ -17,11 +17,12 @@ int main() {
         cout <<"3- Misere Tic Tac Toe"<< endl;
         cout <<"4- 5 x 5 Tic Tac Toe"<<endl;
         cout<< "5- Ultimate Tic Tac Toe"<<endl;
-        cout<< "6- Exit"<<endl;
+        cout << "6-SUS Tic Tac Toe"<< endl;
+        cout<< "7- Exit"<<endl;
         cout<<"Enter your choice: "<<endl;
         string ccc ;
         cin>>ccc;
-        while(ccc!="1"&&ccc!="2"&&ccc!="3" &&ccc!="4" && ccc!="5" && ccc!="6"){
+        while(ccc!="1"&&ccc!="2"&&ccc!="3" &&ccc!="4" && ccc!="5" && ccc!="6" &&ccc!="7" ){
             cout<<"Invalid input, please, try again: "<<endl;
             cin>>ccc;
         }
@@ -292,10 +293,66 @@ int main() {
                 delete players[i];
             }
         }
+        else if (ccc =="6"){
+            Player<char>* players[2];
+    SUS_board<char>* B = new SUS_board<char>();
+
+    cout << "===== Welcome to SUS Game ======\n";
+
+    string name1, name2;
+    cout << "Enter the name of the first player: ";
+    cin >> name1;
+
+    int choice;
+    cout << "Select type for Player 1: \n1. Human player\n2. Random player: "<<endl;
+    cin >> choice;
+
+    switch (choice) {
+        case 1:
+            players[0] = new SUS_player<char>(name1, 'S');
+            break;
+        case 2:
+            players[0] = new SUS_random_player<char>('S');
+            break;
+        default:
+            cout << "Invalid choice for Player 1. Exiting the game.\n";
+            return 1;
+    }
+
+    cout << "Enter the name of the second player: ";
+    cin >> name2;
+
+    cout << "Select one option for Player 2:\n1. Human player\n2. Random player: "<< endl;
+    cin >> choice;
+
+    switch (choice) {
+        case 1:
+            players[1] = new SUS_player<char>(name2, 'U');
+            break;
+        case 2:
+            players[1] = new SUS_random_player<char>('U');
+            break;
+        default:
+            cout << "Invalid choice for Player 2. Exiting the game.\n";
+            return 1;
+    }
+
+    // Create the game manager and run the game
+    GameManager<char> x_o_game(B, players);
+    x_o_game.run();
+    B->display_result(name1 ,name2);
+
+
+    // Clean up
+    delete B;
+    for (int i = 0; i < 2; ++i) {
+        delete players[i];
+    }
+
+        }
         else{
             exit(0);
         }
+
     }
 }
-
-
