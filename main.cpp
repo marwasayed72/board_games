@@ -14,13 +14,14 @@ using namespace std;
 int main() {
     cout<<"** Welcome to games app **"<<endl;
     while (true){
-        cout<<"1- Numerical tic tac toe"<<endl;
-        cout<<"2- Connect 4"<<endl;
+        cout <<"1- Numerical tic tac toe"<<endl;
+        cout <<"2- Connect 4"<<endl;
         cout <<"3- Misere Tic Tac Toe"<< endl;
         cout <<"4- 5 x 5 Tic Tac Toe"<<endl;
-        cout<< "5- Ultimate Tic Tac Toe"<<endl;
+        cout << "5- Ultimate Tic Tac Toe"<<endl;
         cout << "6-SUS Tic Tac Toe"<< endl;
-        cout<< "7- Exit"<<endl;
+        cout << "7- Pyramid Tic Tac Toe"<< endl;
+        cout << "8- Exit"<<endl;
         cout<<"Enter your choice: "<<endl;
         string ccc ;
         cin>>ccc;
