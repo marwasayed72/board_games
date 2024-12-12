@@ -133,6 +133,11 @@ bool X_O_Board<T>::is_win() {
     for (int i = 0; i < this->rows; i++) {
         if ((this->board[i][0] + this->board[i][1] + this->board[i][2]==15 && this->board[i][0] != 0 && this->board[i][1] != 0 && this->board[i][2] != 0) ||
             (this->board[0][i] + this->board[1][i] + this->board[2][i] ==15 && this->board[0][i] != 0 && this->board[1][i] != 0 && this->board[2][i] != 0)) {
+            odd={1, 3, 5, 7, 9};
+            even={2, 4, 6, 8};
+            oddInd=0;
+            evenInd=0;
+            order=0;
             return true;
         }
     }
@@ -140,6 +145,11 @@ bool X_O_Board<T>::is_win() {
     // Check diagonals
     if ((this->board[0][0] + this->board[1][1] + this->board[2][2]==15 && this->board[0][0] != 0 && this->board[1][1] != 0 && this->board[2][2] != 0) ||
         (this->board[0][2] + this->board[1][1] + this->board[2][0]==15 && this->board[0][2] != 0 && this->board[2][0] != 0 && this->board[1][1] != 0)) {
+        odd={1, 3, 5, 7, 9};
+        even={2, 4, 6, 8};
+        oddInd=0;
+        evenInd=0;
+        order=0;
         return true;
     }
 
@@ -149,6 +159,13 @@ bool X_O_Board<T>::is_win() {
 // Return true if 9 moves are done and no winner
 template <typename T>
 bool X_O_Board<T>::is_draw() {
+    if(this->n_moves == 9 && !is_win()){
+        odd={1, 3, 5, 7, 9};
+        even={2, 4, 6, 8};
+        oddInd=0;
+        evenInd=0;
+        order=0;
+    }
     return (this->n_moves == 9 && !is_win());
 }
 
