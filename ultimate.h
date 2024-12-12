@@ -96,7 +96,7 @@ bool ultimateBoard<T> ::update_board(int x, int y, T mark) {
             }
         }
 
-        else if(6<y && y<9 && x<3){
+        else if(5<y && y<9 && x<3){
             if(implicitBoard[0][2]==0){
                 move02++;
             }else{
@@ -117,28 +117,28 @@ bool ultimateBoard<T> ::update_board(int x, int y, T mark) {
                 return false;
             }
         }
-        else if(6<y && y<9 && x<6 && x>2){
+        else if(5<y && y<9 && x<6 && x>2){
             if(implicitBoard[1][2]==0){
                 move12++;
             }else{
                 return false;
             }
         }
-        else if(x>6 && x<9 && y<3){
+        else if(x>5 && x<9 && y<3){
             if(implicitBoard[2][0]==0){
                 move20++;
             }else{
                 return false;
             }
         }
-        else if(x>6 && x<9 && 2<y && y<6){
+        else if(x>5 && x<9 && 2<y && y<6){
             if(implicitBoard[2][1]==0){
                 move21++;
             }else{
                 return false;
             }
         }
-        else if(x>6 && x<9 && 6<y && y<9){
+        else if(x>5 && x<9 && 5<y && y<9){
             if(implicitBoard[2][2]==0){
                 move22++;
             }else{
