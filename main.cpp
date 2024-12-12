@@ -6,6 +6,7 @@
 #include "Misere_X_O.h"
 #include "X_Ogame.h"
 #include "ultimate.h"
+#include "SUS.h"
 
 using namespace std;
 
