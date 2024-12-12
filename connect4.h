@@ -107,6 +107,7 @@ bool connect4Board<T>::is_win() {
         if((this->board[0][i] == this->board[1][i] && this->board[1][i] == this->board[2][i] && this->board[2][i] == this->board[3][i] && this->board[0][i]!=0)||
                 (this->board[1][i] == this->board[2][i] && this->board[2][i] == this->board[3][i] && this->board[3][i] == this->board[4][i] && this->board[1][i]!=0)||
                 (this->board[2][i] == this->board[3][i] && this->board[3][i] == this->board[4][i] && this->board[4][i] == this->board[5][i] && this->board[2][i]!=0)){
+            ord=0;
             return true;
         }
     }
@@ -117,6 +118,7 @@ bool connect4Board<T>::is_win() {
             (this->board[i][1] == this->board[i][2] && this->board[i][2] == this->board[i][3] && this->board[i][3] == this->board[i][4] && this->board[i][1]!=0)||
             (this->board[i][2] == this->board[i][3] && this->board[i][3] == this->board[i][4] && this->board[i][4] == this->board[i][5] && this->board[i][2]!=0)||
             (this->board[i][3] == this->board[i][4] && this->board[i][4] == this->board[i][5] && this->board[i][5] == this->board[i][6] && this->board[i][3]!=0)){
+            ord=0;
             return true;
         }
     }
@@ -129,6 +131,7 @@ bool connect4Board<T>::is_win() {
             }
             else{
                 if(this->board[i][j] == this->board[i+1][j+1] && this->board[i+1][j+1] == this->board[i+2][j+2] && this->board[i+2][j+2] == this->board[i+3][j+3] && this->board[i][j]!=0){
+                    ord=0;
                     return true;
                 }
             }
@@ -144,6 +147,7 @@ bool connect4Board<T>::is_win() {
             }
             else{
                 if(this->board[i][j] == this->board[i+1][j-1] && this->board[i+1][j-1] == this->board[i+2][j-2] && this->board[i+2][j-2] == this->board[i+3][j-3] && this->board[i][j]!=0){
+                    ord=0;
                     return true;
                 }
             }
@@ -156,6 +160,9 @@ bool connect4Board<T>::is_win() {
 // Return true if 9 moves are done and no winner
 template <typename T>
 bool connect4Board<T>::is_draw() {
+    if(this->n_moves == 42 && !is_win()){
+        ord=0;
+    }
     return (this->n_moves == 42 && !is_win());
 }
 
