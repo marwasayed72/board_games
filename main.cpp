@@ -353,7 +353,7 @@ int main() {
     }
 
         }
-        else if(ccc==7){
+        else if(ccc=="7"){
             Player<char>* players[2];
     Board<char>* B = new Pyramic_Board<char>();
     string playerXName, player2Name;
