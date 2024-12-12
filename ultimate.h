@@ -361,12 +361,26 @@ bool ultimateBoard<T> ::is_win() {
     for (int i = 0; i < 3; i++) {
         if ((implicitBoard[i][0] == implicitBoard[i][1] && implicitBoard[i][1] == implicitBoard[i][2] && implicitBoard[i][0] != 0) ||
             (implicitBoard[0][i] == implicitBoard[1][i] && implicitBoard[1][i] == implicitBoard[2][i]  && implicitBoard[0][i] != 0)){
+            for(int k=0; k<3; k++){
+                for(int l=0; l<3; l++){
+                    implicitBoard[k][l]=0;
+                }
+            }
+            turns=0;
+            move00=0, move01=0, move02=0, move10=0, move11=0, move12=0, move20=0, move21=0, move22=0;
             return true;
         }
     }
     // Check diagonals of small square 0 0
     if ((implicitBoard[0][0] == implicitBoard[1][1] && implicitBoard[1][1] == implicitBoard[2][2] && implicitBoard[0][0] != 0) ||
         (implicitBoard[0][2] == implicitBoard[1][1] && implicitBoard[1][1] == implicitBoard[2][0] && implicitBoard[0][2] != 0)) {
+        for(int k=0; k<3; k++){
+            for(int l=0; l<3; l++){
+                implicitBoard[k][l]=0;
+            }
+        }
+        turns=0;
+        move00=0, move01=0, move02=0, move10=0, move11=0, move12=0, move20=0, move21=0, move22=0;
         return true;
     }
     return false;
@@ -374,6 +388,15 @@ bool ultimateBoard<T> ::is_win() {
 
 template<typename T>
 bool ultimateBoard<T> ::is_draw() {
+    if((move00+move01+move02+move10+move11+move12+move20+move21+move22==81) && !is_win()){
+        for(int k=0; k<3; k++){
+            for(int l=0; l<3; l++){
+                implicitBoard[k][l]=0;
+            }
+        }
+        turns=0;
+        move00=0, move01=0, move02=0, move10=0, move11=0, move12=0, move20=0, move21=0, move22=0;
+    }
     return ((move00+move01+move02+move10+move11+move12+move20+move21+move22==81) && !is_win());
 }
 
