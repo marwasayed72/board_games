@@ -158,13 +158,14 @@ bool SUS_board<T>::is_win() {
     if (this->n_moves == 9) {
         if (p1points != p2points) {
 }}
-    return false;
+    return false;}
 
 
 
 
 template <typename T>
 bool SUS_board<T>::is_draw() {
+
     return ( this->n_moves==9 && !is_win());
 }
 
