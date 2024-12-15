@@ -1,5 +1,6 @@
 #ifndef UNTITLED23_WORDXO_H
 #define UNTITLED23_WORDXO_H
+
 #endif // UNTITLED23_WORDXO_H
 
 #include "BoardGame_Classes.h"
@@ -10,6 +11,8 @@
 #include <fstream>
 #include <string>
 #include <unordered_set>
+#include <vector>
+
 
 using namespace std;
 
@@ -153,9 +156,11 @@ template <typename T>
 void WordXO_Player<T>::getmove(int& x, int& y) {
     cout << "\nPlease enter your move x and y separated by spaces: ";
     cin >> x >> y;
-    cout << "Enter the intput as text:   " ;
-    cin >> this->symbol ;
+    cout << "Enter the input as text: ";
+    cin >> this->symbol;
+    this->symbol = std::toupper(this->symbol);
 }
+
 
 // Constructor for WordXO_Random_Player
 template <typename T>
@@ -166,9 +171,23 @@ WordXO_Random_Player<T>::WordXO_Random_Player(T symbol) : RandomPlayer<T>(symbol
 
 template <typename T>
 void WordXO_Random_Player<T>::getmove(int& x, int& y) {
+    vector<char> alphabets;
+    for (char letter = 'A'; letter <= 'Z'; ++letter) {
+            alphabets.push_back(letter);
+
+    }
+
+    srand(time(0));
+    int randomIndex = rand() % alphabets.size();
+    char selectedLetter = alphabets[randomIndex];
+    this->symbol = selectedLetter;
+
     x = rand() % this->dimension;
     y = rand() % this->dimension;
-}
+
+    alphabets.clear();
+
+    }
 
 
 
