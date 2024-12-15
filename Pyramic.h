@@ -139,9 +139,10 @@ Pyramic_Player<T>::Pyramic_Player(string name, T symbol) : Player<T>(name, symbo
 
 template <typename T>
 void Pyramic_Player<T>::getmove(int& x, int& y) {
-    cout << "\nPlease enter your move x and y (0 to 2) separated by spaces: ";
+    cout << "\nEnter your move (x, y) separated by space : ";
     cin >> x >> y;
 }
+
 
 
 // Constructor for X_O_Random_Player
@@ -149,14 +150,21 @@ template <typename T>
 Pyramic_Random_Player<T>::Pyramic_Random_Player(T symbol) : RandomPlayer<T>(symbol) {
     this->dimension = 3;
     this->name = "Random Computer Player";
-    srand(static_cast<unsigned int>(time(0)));  // Seed the random number generator
+    srand(static_cast<unsigned int>(time(0)));
 }
 
 
+
+// getmove
 template <typename T>
 void Pyramic_Random_Player<T>::getmove(int& x, int& y) {
-    x = rand() % this->dimension;  // Random number between 0 and 2
-    y = rand() % this->dimension;
+    if (this->dimension > 0) {
+        x = rand() % this->dimension;
+        y = rand() % this->dimension;
+    } else {
+        x = 0;
+        y = 0;
+    }
 }
 
 
