@@ -69,7 +69,7 @@ bool WordXO_Board<T>::update_board(int x, int y, T symbol) {
 
 // Display the board and the pieces on it
 template <typename T>
-void X_O_Board<T>::display_board() {
+void WordXO_Board<T>::display_board() {
     for (int i = 0; i < this->rows; i++) {
         cout << "\n|";
         for (int j = 0; j < this->columns; j++) {
