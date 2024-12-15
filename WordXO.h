@@ -71,15 +71,15 @@ bool WordXO_Board<T>::update_board(int x, int y, T symbol) {
 template <typename T>
 void WordXO_Board<T>::display_board() {
     for (int i = 0; i < this->rows; i++) {
-        cout << "\n|";
+        cout << "\n| ";
         for (int j = 0; j < this->columns; j++) {
-            if(this->board[i][j]==0){
-                cout << "  (" << i << "," << j << ")  |";
-            }
-            else if(this->board[i][j]!=0){
-                cout << "    " << this->board[i][j] << "    |";
-            }
+            cout << "(" << i << "," << j << ")";
+            cout << setw(2) << this->board[i][j] << " |";
         }
+        cout << "\n-----------------------------";
+    }
+    cout << endl;
+}
 
 // Check for a winner
 template <typename T>
@@ -154,7 +154,7 @@ WordXO_Player<T>::WordXO_Player(string name, T symbol) : Player<T>(name, symbol)
 // Get move from player
 template <typename T>
 void WordXO_Player<T>::getmove(int& x, int& y) {
-    cout << "\nPlease enter your move x and y separated by spaces: ";
+    cout << "\nEnter your move (x, y) separated by space : ";
     cin >> x >> y;
     cout << "Enter the input as text: ";
     cin >> this->symbol;
