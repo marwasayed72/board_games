@@ -1,6 +1,5 @@
 #include <iostream>
 #include "BoardGame_Classes.h"
-//#include "MinMaxPlayer.h"
 #include "3x3X_O.h.h"
 #include "connect4.h"
 #include "Misere_X_O.h"
@@ -45,11 +44,10 @@ int main() {
             cout << "Choose the odd Player type:\n";
             cout << "1. Human\n";
             cout << "2. Random Computer\n";
-            cout << "3. Smart Computer (AI)\n";
             string choice;
             cin >> choice;
 
-            while(choice!="1" && choice!="2" && choice!="3"){
+            while(choice!="1" && choice!="2"){
                 cout << "Invalid choice for Player 1. Please try again: \n";
                 cin>>choice;
             }
@@ -59,10 +57,6 @@ int main() {
             else if(choice == "2"){
                 players[0] = new X_O_Random_Player<int>(0, playerXName);
             }
-            else {
-//                players[0] = new X_O_MinMax_Player<int>(0);
-//                players[0]->setBoard(B);
-            }
 
             // Set up player 2
             cout << "Enter the even Player name: ";
@@ -70,10 +64,9 @@ int main() {
             cout << "Choose the even Player type:\n";
             cout << "1. Human\n";
             cout << "2. Random Computer\n";
-            cout << "3. Smart Computer (AI)\n";
             cin >> choice;
 
-            while(choice!="1" && choice!="2" && choice!="3"){
+            while(choice!="1" && choice!="2"){
                 cout << "Invalid choice for Player 1. Please try again: \n";
                 cin>>choice;
             }
@@ -82,10 +75,6 @@ int main() {
             }
             else if(choice == "2"){
                 players[1] = new X_O_Random_Player<int>(0, player2Name);
-            }
-            else {
-//              players[1] = new X_O_MinMax_Player<int>(0);
-//              players[1]->setBoard(B);
             }
 
             // Create the game manager and run the game
@@ -108,11 +97,10 @@ int main() {
             cout << "Choose the odd Player type:\n";
             cout << "1. Human\n";
             cout << "2. Random Computer\n";
-            cout << "3. Smart Computer (AI)\n";
             string choice;
             cin >> choice;
 
-            while(choice!="1" && choice!="2" && choice!="3"){
+            while(choice!="1" && choice!="2"){
                 cout << "Invalid choice for Player 1. Please try again: \n";
                 cin>>choice;
             }
@@ -122,20 +110,15 @@ int main() {
             else if(choice == "2"){
                 players[0] = new connect4_RandomPlayer<char>('X', playerXName);
             }
-            else {
-//            players[0] = new X_O_MinMax_Player<int>('X');
-//            players[0]->setBoard(cb);
-            }
 
             cout << "Enter the O Player name: ";
             cin >> playerOName;
             cout << "Choose the even Player type:\n";
             cout << "1. Human\n";
             cout << "2. Random Computer\n";
-            cout << "3. Smart Computer (AI)\n";
             cin >> choice;
 
-            while(choice!="1" && choice!="2" && choice!="3"){
+            while(choice!="1" && choice!="2" ){
                 cout << "Invalid choice for Player 1. Please try again: \n";
                 cin>>choice;
             }
@@ -144,10 +127,6 @@ int main() {
             }
             else if(choice == "2"){
                 players[1] = new connect4_RandomPlayer<char>('O', playerOName);
-            }
-            else {
-//            players[1] = new X_O_MinMax_Player<int>(0);
-//            players[1]->setBoard(cb);
             }
 
 
@@ -262,7 +241,6 @@ int main() {
         else if(ccc=="5"){
             Player<char>* players[2];
             ultimateBoard<char>* B = new ultimateBoard<char>();
-            cout << "===== Welcome to Misere XO Game ======\n";
             string playerXName, playerOName;
             cout << "Enter the name of the first player: ";
             cin >> playerXName;
@@ -300,175 +278,175 @@ int main() {
         }
         else if (ccc =="6"){
             Player<char>* players[2];
-    SUS_board<char>* B = new SUS_board<char>();
+            SUS_board<char>* B = new SUS_board<char>();
 
-    cout << "===== Welcome to SUS Game ======\n";
+            cout << "===== Welcome to SUS Game ======\n";
 
-    string name1, name2;
-    cout << "Enter the name of the first player: ";
-    cin >> name1;
+            string name1, name2;
+            cout << "Enter the name of the first player: ";
+            cin >> name1;
 
-    int choice;
-    cout << "Select type for Player 1: \n1. Human player\n2. Random player: "<<endl;
-    cin >> choice;
+            int choice;
+            cout << "Select type for Player 1: \n1. Human player\n2. Random player: "<<endl;
+            cin >> choice;
 
-    switch (choice) {
-        case 1:
-            players[0] = new SUS_player<char>(name1, 'S');
-            break;
-        case 2:
-            players[0] = new SUS_random_player<char>('S');
-            break;
-        default:
-            cout << "Invalid choice for Player 1. Exiting the game.\n";
-            return 1;
-    }
+            switch (choice) {
+                case 1:
+                    players[0] = new SUS_player<char>(name1, 'S');
+                    break;
+                case 2:
+                    players[0] = new SUS_random_player<char>('S');
+                    break;
+                default:
+                    cout << "Invalid choice for Player 1. Exiting the game.\n";
+                    return 1;
+            }
 
-    cout << "Enter the name of the second player: ";
-    cin >> name2;
+            cout << "Enter the name of the second player: ";
+            cin >> name2;
 
-    cout << "Select one option for Player 2:\n1. Human player\n2. Random player: "<< endl;
-    cin >> choice;
+            cout << "Select one option for Player 2:\n1. Human player\n2. Random player: "<< endl;
+            cin >> choice;
 
-    switch (choice) {
-        case 1:
-            players[1] = new SUS_player<char>(name2, 'U');
-            break;
-        case 2:
-            players[1] = new SUS_random_player<char>('U');
-            break;
-        default:
-            cout << "Invalid choice for Player 2. Exiting the game.\n";
-            return 1;
-    }
+            switch (choice) {
+                case 1:
+                    players[1] = new SUS_player<char>(name2, 'U');
+                    break;
+                case 2:
+                    players[1] = new SUS_random_player<char>('U');
+                    break;
+                default:
+                    cout << "Invalid choice for Player 2. Exiting the game.\n";
+                    return 1;
+            }
 
-    // Create the game manager and run the game
-    GameManager<char> x_o_game(B, players);
-    x_o_game.run();
-    B->display_result(name1 ,name2);
+            // Create the game manager and run the game
+            GameManager<char> x_o_game(B, players);
+            x_o_game.run();
+            B->display_result(name1 ,name2);
 
 
-    // Clean up
-    delete B;
-    for (int i = 0; i < 2; ++i) {
-        delete players[i];
-    }
+            // Clean up
+            delete B;
+            for (int i = 0; i < 2; ++i) {
+                delete players[i];
+            }
 
         }
         else if(ccc=="7") {
             Player<char>* players[2];
-    Board<char>* B = new Pyramic_Board<char>();
-    string playerXName, player2Name;
+            Board<char>* B = new Pyramic_Board<char>();
+            string playerXName, player2Name;
 
-    cout << "Welcome to Pyramic X-O Game. :))\n";
+            cout << "Welcome to Pyramic X-O Game. :))\n";
+            int choice;
+            // Set up player 1
+            cout << "Enter Player X name: ";
+            cin >> playerXName;
+            cout << "Choose Player X type:\n";
+            cout << "1. Human\n";
+            cout << "2. Random Computer\n";
+            cin >> choice;
 
-    // Set up player 1
-    cout << "Enter Player X name: ";
-    cin >> playerXName;
-    cout << "Choose Player X type:\n";
-    cout << "1. Human\n";
-    cout << "2. Random Computer\n";
-    cin >> choice;
+            switch(choice) {
+                case 1:
+                    players[0] = new Pyramic_Player<char>(playerXName, 'X');
+                    break;
+                case 2:
+                    players[0] = new Pyramic_Random_Player<char>('X');
+                    break;
+                default:
+                    cout << "Invalid choice for Player 1. Exiting the game.\n";
+                    return 1;
+            }
 
-    switch(choice) {
-        case 1:
-            players[0] = new Pyramic_Player<char>(playerXName, 'X');
-            break;
-        case 2:
-            players[0] = new Pyramic_Random_Player<char>('X');
-            break;
-        default:
-            cout << "Invalid choice for Player 1. Exiting the game.\n";
-            return 1;
-    }
+            // Set up player 2
+            cout << "Enter Player 2 name: ";
+            cin >> player2Name;
+            cout << "Choose Player 2 type:\n";
+            cout << "1. Human\n";
+            cout << "2. Random Computer\n";
+            cin >> choice;
 
-    // Set up player 2
-    cout << "Enter Player 2 name: ";
-    cin >> player2Name;
-    cout << "Choose Player 2 type:\n";
-    cout << "1. Human\n";
-    cout << "2. Random Computer\n";
-    cin >> choice;
+            switch(choice) {
+                case 1:
+                    players[1] = new Pyramic_Player<char>(player2Name, 'O');
+                    break;
+                case 2:
+                    players[1] = new Pyramic_Random_Player<char>('O');
+                    break;
+                default:
+                    cout << "Invalid choice for Player 2. Exiting the game.\n";
+                    return 1;
+            }
 
-    switch(choice) {
-        case 1:
-            players[1] = new Pyramic_Player<char>(player2Name, 'O');
-            break;
-        case 2:
-            players[1] = new Pyramic_Random_Player<char>('O');
-            break;
-        default:
-            cout << "Invalid choice for Player 2. Exiting the game.\n";
-            return 1;
-    }
+            // Create the game manager and run the game
+            GameManager<char> x_o_game(B, players);
+            x_o_game.run();
 
-    // Create the game manager and run the game
-    GameManager<char> x_o_game(B, players);
-    x_o_game.run();
-
-    // Clean up
-    delete B;
-    for (int i = 0; i < 2; ++i) {
-        delete players[i];
-    }
-        }    
+            // Clean up
+            delete B;
+            for (int i = 0; i < 2; ++i) {
+                delete players[i];
+            }
+        }
         else if(ccc=="8"){
-             Player<char>* players[2];
-    Board<char>* B = new WordXO_Board<char>();
-    string playerXName, player2Name;
+            Player<char>* players[2];
+            Board<char>* B = new WordXO_Board<char>();
+            string playerXName, player2Name;
 
-    cout << "Welcome to Word X-O Game. :))\n";
+            cout << "Welcome to Word X-O Game. :))\n";
+            int choice;
+            // Set up player 1
+            cout << "Enter Player X name: ";
+            cin >> playerXName;
+            cout << "Choose Player X type:\n";
+            cout << "1. Human\n";
+            cout << "2. Random Computer\n";
+            cin >> choice;
 
-    // Set up player 1
-    cout << "Enter Player X name: ";
-    cin >> playerXName;
-    cout << "Choose Player X type:\n";
-    cout << "1. Human\n";
-    cout << "2. Random Computer\n";
-    cin >> choice;
+            switch(choice) {
+                case 1:
+                    players[0] = new WordXO_Player<char>(playerXName, 'X');
+                    break;
+                case 2:
+                    players[0] = new WordXO_Random_Player<char>('X');
+                    break;
+                default:
+                    cout << "Invalid choice for Player 1. Exiting the game.\n";
+                    return 1;
+            }
 
-    switch(choice) {
-        case 1:
-            players[0] = new WordXO_Player<char>(playerXName, 'X');
-            break;
-        case 2:
-            players[0] = new WordXO_Random_Player<char>('X');
-            break;
-        default:
-            cout << "Invalid choice for Player 1. Exiting the game.\n";
-            return 1;
-    }
+            // Set up player 2
+            cout << "Enter Player 2 name: ";
+            cin >> player2Name;
+            cout << "Choose Player 2 type:\n";
+            cout << "1. Human\n";
+            cout << "2. Random Computer\n";
+            cin >> choice;
 
-    // Set up player 2
-    cout << "Enter Player 2 name: ";
-    cin >> player2Name;
-    cout << "Choose Player 2 type:\n";
-    cout << "1. Human\n";
-    cout << "2. Random Computer\n";
-    cin >> choice;
+            switch(choice) {
+                case 1:
+                    players[1] = new WordXO_Player<char>(player2Name, 'O');
+                    break;
+                case 2:
+                    players[1] = new WordXO_Random_Player<char>('O');
+                    break;
+                default:
+                    cout << "Invalid choice for Player 2. Exiting the game.\n";
+                    return 1;
+            }
 
-    switch(choice) {
-        case 1:
-            players[1] = new WordXO_Player<char>(player2Name, 'O');
-            break;
-        case 2:
-            players[1] = new WordXO_Random_Player<char>('O');
-            break;
-        default:
-            cout << "Invalid choice for Player 2. Exiting the game.\n";
-            return 1;
-    }
+            // Create the game manager and run the game
+            GameManager<char> x_o_game(B, players);
+            x_o_game.run();
 
-    // Create the game manager and run the game
-    GameManager<char> x_o_game(B, players);
-    x_o_game.run();
-
-    // Clean up
-    delete B;
-    for (int i = 0; i < 2; ++i) {
-        delete players[i];
-    }
-        }    
+            // Clean up
+            delete B;
+            for (int i = 0; i < 2; ++i) {
+                delete players[i];
+            }
+        }
         else{
             exit(0);
         }
