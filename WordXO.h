@@ -1,7 +1,6 @@
 #ifndef UNTITLED23_WORDXO_H
 #define UNTITLED23_WORDXO_H
 
-#endif // UNTITLED23_WORDXO_H
 
 #include "BoardGame_Classes.h"
 #include <iostream>
@@ -188,6 +187,9 @@ void WordXO_Random_Player<T>::getmove(int& x, int& y) {
     alphabets.clear();
 
     }
+
+
+#endif // UNTITLED23_WORDXO_H
 
 
 
