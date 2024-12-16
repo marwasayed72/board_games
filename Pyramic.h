@@ -1,6 +1,6 @@
 #ifndef PYRAMIC_H
 #define PYRAMIC_H
-#endif // PYRAMIC_H
+
 
 #include "BoardGame_Classes.h"
 #include <iostream>
@@ -32,7 +32,7 @@ public:
     Pyramic_Random_Player (T symbol);
     void getmove(int &x, int &y) ;
 };
-
+///////////////////////////////////////////////////////////////////
 
 #include <iostream>
 #include <iomanip>
@@ -166,6 +166,9 @@ void Pyramic_Random_Player<T>::getmove(int& x, int& y) {
         y = 0;
     }
 }
+
+
+#endif // PYRAMIC_H
 
 
 
