@@ -156,7 +156,8 @@ void SUS_board<T>::countpoints(int x, int y, T symbol) {
 template <typename T>
 bool SUS_board<T>::is_win() {
     if (this->n_moves == 9) {
-        if (p1points != p2points) {
+        if (p1points > p2points) {
+                return true ;
 }}
     return false;}
 
