@@ -56,9 +56,9 @@ Pyramic_Board<T>::Pyramic_Board() {
 
 template <typename T>
 bool Pyramic_Board<T>::update_board(int x, int y, T symbol) {
-    if ((x == 0 && y == 2) ||
-        (x == 1 && y >= 1 && y <= 3) ||
-        (x == 2 && y >= 0 && y <= 4)) {
+    if (((x == 0 && y == 2) ||
+         (x == 1 && y >= 1 && y <= 3) ||
+         (x == 2 && y >= 0 && y <= 4)) && this->board[x][y]==0) {
         this->n_moves++;
         this->board[x][y] = symbol;
         return true;
@@ -98,21 +98,21 @@ void Pyramic_Board<T>::display_board() {
 template <typename T>
 bool Pyramic_Board<T>::is_win() {
     for (int i = 0; i < 3; ++i) {
-            if ((this->board[2][i] == this->board[2][i+1] && this->board[2][i] ==
-                this->board[2][i+2] && this->board[2][i] !=0 ) || (this->board[1][i] == this->board[1][i+1] &&
-                this->board[1][i] == this->board[1][i+2] && this->board[1][i] !=0)) {
-                return true;
-            }
+        if ((this->board[2][i] == this->board[2][i+1] && this->board[2][i] ==
+                                                         this->board[2][i+2] && this->board[2][i] !=0 ) || (this->board[1][i] == this->board[1][i+1] &&
+                                                                                                            this->board[1][i] == this->board[1][i+2] && this->board[1][i] !=0)) {
+            return true;
         }
-            if (((this->board[0][2] == this->board[1][2] && this->board[0][2] == this->board[2][2]) ||
-               (this->board[0][2] == this->board[1][1] && this->board[0][2] == this->board[2][0]) ||
-               (this->board[0][2] == this->board[1][3] && this->board[0][2] == this->board[2][4])) &&
-               (this->board[0][2] !=0)){
-                return true;
-            }
+    }
+    if (((this->board[0][2] == this->board[1][2] && this->board[0][2] == this->board[2][2]) ||
+         (this->board[0][2] == this->board[1][1] && this->board[0][2] == this->board[2][0]) ||
+         (this->board[0][2] == this->board[1][3] && this->board[0][2] == this->board[2][4])) &&
+        (this->board[0][2] !=0)){
+        return true;
+    }
     return false;
 
-    }
+}
 
 
 
